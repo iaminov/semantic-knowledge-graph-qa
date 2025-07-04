@@ -86,6 +86,36 @@ Build and run with Docker Compose:
 docker-compose up --build
 ```
 
+### Example Usage
+
+1. Ingest text documents:
+```bash
+curl -X POST "http://localhost:8000/ingest" \
+  -H "accept: application/json" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "texts": [
+      "Google was founded by Larry Page and Sergey Brin in 1998.",
+      "Larry Page is a computer scientist and co-founder of Google.",
+      "Sergey Brin worked on the PageRank algorithm with Larry Page.",
+      "Sundar Pichai is the current CEO of Google."
+    ],
+    "description": "Information about Google and its founders"
+  }'
+```
+
+2. Query the knowledge graph:
+```bash
+curl -X GET "http://localhost:8000/query/YOUR_GRAPH_ID?question=Who%20founded%20Google" \
+  -H "accept: application/json"
+```
+
+3. Get graph summary:
+```bash
+curl -X GET "http://localhost:8000/graphs/YOUR_GRAPH_ID/summary" \
+  -H "accept: application/json"
+```
+
 ### API Endpoints
 
 The API will be available at `http://localhost:8000` with the following endpoints:
