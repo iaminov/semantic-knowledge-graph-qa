@@ -13,10 +13,10 @@ class QueryRouter:
     def __init__(self, graph: nx.DiGraph):
         self.graph = graph
         self.question_patterns = {
-            'what_is': [r'what is (.*?)\?', r'what are (.*?)\?'],
-            'who_is': [r'who is (.*?)\?', r'who are (.*?)\?'],
             'relationship': [r'what is the relationship between (.*?) and (.*?)\?',
-                           r'how is (.*?) related to (.*?)\?']
+                           r'how is (.*?) related to (.*?)\?'],
+            'what_is': [r'what is (.*?)\?', r'what are (.*?)\?'],
+            'who_is': [r'who is (.*?)\?', r'who are (.*?)\?']
         }
 
     def extract_entities_from_question(self, question: str) -> list[str]:
